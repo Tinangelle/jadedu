@@ -48,6 +48,8 @@ jobs:
           rm -rf "company-site/${{ env.DEPLOY_DIR }}"
           mkdir -p "company-site/${{ env.DEPLOY_DIR }}"
           cp -r public/* "company-site/${{ env.DEPLOY_DIR }}/"
+          # Disable Jekyll so GitHub Pages serves static files under /jadedu/ as-is
+          touch company-site/.nojekyll
 
       - name: Deploy to company repository
         working-directory: company-site
