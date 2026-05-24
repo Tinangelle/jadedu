@@ -148,6 +148,11 @@ title = 'LinkedIn'
 url = 'https://www.linkedin.com/in/xundu/'
 
 [[params.socialIcons]]
+name = 'instagram'
+title = 'Instagram'
+url = 'https://www.instagram.com/jadedu24601/'
+
+[[params.socialIcons]]
 name = 'discord'
 title = 'Discord'
 url = 'https://discord.com/users/552717578271850496'
