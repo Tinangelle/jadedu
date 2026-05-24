@@ -1,4 +1,4 @@
-name: Build and deploy to company site
+name: Build and deploy personal site
 
 on:
   push:
@@ -11,17 +11,17 @@ concurrency:
   group: deploy-jadedu
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 env:
   HUGO_BASE_URL: https://ignissolarisstudio.com/jadedu/
-  DEPLOY_DIR: jadedu
-  COMPANY_REPO: Tinangelle/Tinangelle.github.io
-  COMPANY_BRANCH: main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout personal site
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
@@ -33,30 +33,12 @@ jobs:
           extended: true
 
       - name: Build site
-        run: hugo --minify --baseURL "${{ env.HUGO_BASE_URL }}"
+        run: |
+          hugo --minify --baseURL "${{ env.HUGO_BASE_URL }}"
+          touch public/.nojekyll
 
-      - name: Checkout company site
-        uses: actions/checkout@v4
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          repository: ${{ env.COMPANY_REPO }}
-          ref: ${{ env.COMPANY_BRANCH }}
-          token: ${{ secrets.COMPANY_REPO_TOKEN }}
-          path: company-site
-
-      - name: Copy built files into company site subpath
-        run: |
-          rm -rf "company-site/${{ env.DEPLOY_DIR }}"
-          mkdir -p "company-site/${{ env.DEPLOY_DIR }}"
-          cp -r public/* "company-site/${{ env.DEPLOY_DIR }}/"
-          # Disable Jekyll so GitHub Pages serves static files under /jadedu/ as-is
-          touch company-site/.nojekyll
-
-      - name: Deploy to company repository
-        working-directory: company-site
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "${{ env.DEPLOY_DIR }}/"
-          git diff --staged --quiet && echo "No changes to deploy." && exit 0
-          git commit -m "Deploy personal site to /${{ env.DEPLOY_DIR }}/"
-          git push origin "HEAD:${{ env.COMPANY_BRANCH }}"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
