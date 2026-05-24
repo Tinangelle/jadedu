@@ -1,4 +1,4 @@
-name: Deploy Hugo site to Pages
+name: Build and deploy to company site
 
 on:
   push:
@@ -8,19 +8,18 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: pages
+  group: deploy-jadedu
   cancel-in-progress: true
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+env:
+  HUGO_BASE_URL: https://ignissolarisstudio.com/jadedu/
+  DEPLOY_DIR: jadedu
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout personal site
         uses: actions/checkout@v4
         with:
           submodules: recursive
@@ -31,25 +30,28 @@ jobs:
           hugo-version: latest
           extended: true
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
+      - name: Build site
+        run: hugo --minify --baseURL "${{ env.HUGO_BASE_URL }}"
 
-      - name: Build with Hugo
-        run: hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}"
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Checkout company site
+        uses: actions/checkout@v4
         with:
-          path: ./public
+          repository: ${{ vars.COMPANY_REPO }}
+          token: ${{ secrets.COMPANY_REPO_TOKEN }}
+          path: company-site
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Copy built files into company site subpath
+        run: |
+          rm -rf "company-site/${{ env.DEPLOY_DIR }}"
+          mkdir -p "company-site/${{ env.DEPLOY_DIR }}"
+          cp -r public/* "company-site/${{ env.DEPLOY_DIR }}/"
+
+      - name: Deploy to company repository
+        working-directory: company-site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${{ env.DEPLOY_DIR }}/"
+          git diff --staged --quiet && echo "No changes to deploy." && exit 0
+          git commit -m "Deploy personal site to /${{ env.DEPLOY_DIR }}/"
+          git push
