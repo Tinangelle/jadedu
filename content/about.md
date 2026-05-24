@@ -1,5 +1,6 @@
 ---
-title: "About"
+title: "关于"
+translationKey: about
 ShowReadingTime: false
 ShowBreadCrumbs: false
 author: ""

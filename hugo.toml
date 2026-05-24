@@ -14,24 +14,28 @@ title = 'JadeDu'
 
 [languages.zh.params]
 languageAltTitle = '中文'
+description = 'Jade Du — Ignis Solaris Studio 开发者'
+
+[languages.zh.params.profileMode]
+subtitle = 'Ignis Solaris Studio 开发者 | 心理学背景 & QA 老将'
 
 [[languages.zh.menu.main]]
-name = 'About'
+name = '关于'
 url = '/about/'
 weight = 10
 
 [[languages.zh.menu.main]]
-name = 'Project'
+name = '项目'
 url = '/project/'
 weight = 20
 
 [[languages.zh.menu.main]]
-name = 'Blogs'
+name = '博客'
 url = '/posts/'
 weight = 30
 
 [[languages.zh.menu.main]]
-name = 'Resume'
+name = '简历'
 url = '/resume/'
 weight = 40
 
@@ -41,13 +45,17 @@ url = 'https://ignissolarisstudio.com/'
 weight = 50
 
 [languages.en]
-label = 'English'
+label = 'EN'
 locale = 'en'
 weight = 2
 title = 'JadeDu'
 
 [languages.en.params]
-languageAltTitle = 'English'
+languageAltTitle = 'EN'
+description = 'Jade Du — Dev @ Ignis Solaris Studio'
+
+[languages.en.params.profileMode]
+subtitle = 'Dev @ Ignis Solaris Studio | Psychology-driven & QA veteran.'
 
 [[languages.en.menu.main]]
 name = 'About'
@@ -75,31 +83,35 @@ url = 'https://ignissolarisstudio.com/'
 weight = 50
 
 [languages.fr]
-label = 'French'
+label = 'FR'
 locale = 'fr'
 weight = 3
 title = 'JadeDu'
 
 [languages.fr.params]
-languageAltTitle = 'French'
+languageAltTitle = 'FR'
+description = 'Jade Du — Développeuse @ Ignis Solaris Studio'
+
+[languages.fr.params.profileMode]
+subtitle = 'Dév. @ Ignis Solaris Studio | Psychologie & vétéran QA.'
 
 [[languages.fr.menu.main]]
-name = 'About'
+name = 'À propos'
 url = '/about/'
 weight = 10
 
 [[languages.fr.menu.main]]
-name = 'Project'
+name = 'Projets'
 url = '/project/'
 weight = 20
 
 [[languages.fr.menu.main]]
-name = 'Blogs'
+name = 'Blogues'
 url = '/posts/'
 weight = 30
 
 [[languages.fr.menu.main]]
-name = 'Resume'
+name = 'CV'
 url = '/resume/'
 weight = 40
 
@@ -110,7 +122,6 @@ weight = 50
 
 [params]
 env = 'production'
-description = 'Jade Du — Dev @ Ignis Solaris Studio'
 author = 'Jade Du'
 defaultTheme = 'auto'
 displayFullLangName = true
@@ -121,7 +132,6 @@ ShowPostNavLinks = true
 [params.profileMode]
 enabled = true
 title = 'Jade Du'
-subtitle = 'Dev @ Ignis Solaris Studio | Psychology-driven & QA veteran.'
 imageUrl = 'avatar.PNG'
 imageTitle = 'Jade Du'
 imageWidth = 150
