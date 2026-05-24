@@ -1,0 +1,151 @@
+baseURL = 'https://ignissolarisstudio.com/'
+title = 'JadeDu'
+theme = 'PaperMod'
+defaultContentLanguage = 'zh'
+defaultContentLanguageInSubdir = false
+enableEmoji = true
+enableRobotsTXT = true
+
+[languages.zh]
+label = '中文'
+locale = 'zh-cn'
+weight = 1
+title = 'JadeDu'
+
+[languages.zh.params]
+languageAltTitle = '中文'
+
+[[languages.zh.menu.main]]
+name = 'About'
+url = '/about/'
+weight = 10
+
+[[languages.zh.menu.main]]
+name = 'Project'
+url = '/project/'
+weight = 20
+
+[[languages.zh.menu.main]]
+name = 'Blogs'
+url = '/posts/'
+weight = 30
+
+[[languages.zh.menu.main]]
+name = 'Resume'
+url = '/resume/'
+weight = 40
+
+[[languages.zh.menu.main]]
+name = 'IgnisSolarisStudio'
+url = 'https://ignissolarisstudio.com/'
+weight = 50
+
+[languages.en]
+label = 'English'
+locale = 'en'
+weight = 2
+title = 'JadeDu'
+
+[languages.en.params]
+languageAltTitle = 'English'
+
+[[languages.en.menu.main]]
+name = 'About'
+url = '/about/'
+weight = 10
+
+[[languages.en.menu.main]]
+name = 'Project'
+url = '/project/'
+weight = 20
+
+[[languages.en.menu.main]]
+name = 'Blogs'
+url = '/posts/'
+weight = 30
+
+[[languages.en.menu.main]]
+name = 'Resume'
+url = '/resume/'
+weight = 40
+
+[[languages.en.menu.main]]
+name = 'IgnisSolarisStudio'
+url = 'https://ignissolarisstudio.com/'
+weight = 50
+
+[languages.fr]
+label = 'French'
+locale = 'fr'
+weight = 3
+title = 'JadeDu'
+
+[languages.fr.params]
+languageAltTitle = 'French'
+
+[[languages.fr.menu.main]]
+name = 'About'
+url = '/about/'
+weight = 10
+
+[[languages.fr.menu.main]]
+name = 'Project'
+url = '/project/'
+weight = 20
+
+[[languages.fr.menu.main]]
+name = 'Blogs'
+url = '/posts/'
+weight = 30
+
+[[languages.fr.menu.main]]
+name = 'Resume'
+url = '/resume/'
+weight = 40
+
+[[languages.fr.menu.main]]
+name = 'IgnisSolarisStudio'
+url = 'https://ignissolarisstudio.com/'
+weight = 50
+
+[params]
+env = 'production'
+description = 'Jade Du — Dev @ Ignis Solaris Studio'
+author = 'Jade Du'
+defaultTheme = 'auto'
+displayFullLangName = true
+ShowReadingTime = true
+ShowShareButtons = true
+ShowPostNavLinks = true
+
+[params.profileMode]
+enabled = true
+title = 'Jade Du'
+subtitle = 'Dev @ Ignis Solaris Studio | Psychology-driven & QA veteran.'
+imageUrl = 'avatar.png'
+imageTitle = 'Jade Du'
+imageWidth = 150
+imageHeight = 150
+
+[[params.socialIcons]]
+name = 'github'
+title = 'GitHub'
+url = 'https://github.com/Tinangelle'
+
+[[params.socialIcons]]
+name = 'linkedin'
+title = 'LinkedIn'
+url = 'https://www.linkedin.com/in/xundu/'
+
+[[params.socialIcons]]
+name = 'discord'
+title = 'Discord'
+url = 'https://discord.com/users/552717578271850496'
+
+[[params.socialIcons]]
+name = 'email'
+title = 'Email'
+url = 'mailto:jadedu026@gmail.com'
+
+[markup.goldmark.renderer]
+unsafe = true
